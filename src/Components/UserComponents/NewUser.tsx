@@ -5,7 +5,7 @@ export function NewUser () {
 
 
 
-    const [formData, setFormData] = useState({name: '', email: '', password: ''})
+    const [formData, setFormData] = useState({name: '', password: ''})
 
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
         setFormData({

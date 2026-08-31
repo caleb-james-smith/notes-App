@@ -20,6 +20,11 @@ export type NewUserForm = {
     password: string
 }
 
+export type LoginStatus = {
+    user: User | null
+    loginStatus: boolean
+}
+
 
 
 // using Classes to keep the data types
