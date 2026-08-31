@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { User, LoginStatus } from '../../data/types'
 
 
@@ -13,7 +13,12 @@ export function Login () {
             loginStatus: false
         }
     )
-    
+
+    // When login status changes, log it.
+    useEffect (() => {
+        console.log('useEffect:', loginStatus)
+    }, [loginStatus])
+
     const handleLoginFormChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
         setLoginFormData({
             ...loginFormData, 
@@ -89,17 +94,10 @@ export function Login () {
 
     }
 
-    useEffect (() => {
-        console.log('useEffect:', loginStatus)
-    },[loginStatus])
-
-    
-    
-
-
     return (
         <>
         <div>
+            <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <label htmlFor="email">Email: </label>
                 <input type="text" name="email" id="email" onChange={handleLoginFormChange} />
@@ -110,6 +108,7 @@ export function Login () {
             <button onClick={handleLogout}>Logout</button>
         </div>
         <div>
+            <h2>Update User Info</h2>
             <form onSubmit={handleUpdate}>
                 <label htmlFor='email'>Email: </label>
                 <input type='text' name='email' id='email' onChange={handleUpdateFormChange} />
