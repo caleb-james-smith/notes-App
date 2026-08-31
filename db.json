@@ -10,6 +10,11 @@
       "email": "w@gmail.com",
       "password": "1234",
       "id": 2
+    },
+    {
+      "email": "caleb2@gmail.com",
+      "password": "Password2",
+      "id": 3
     }
   ],
   "notes": []
