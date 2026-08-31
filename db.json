@@ -15,6 +15,17 @@
       "email": "caleb2@gmail.com",
       "password": "Password2",
       "id": 3
+    },
+    {
+      "email": "jimmy@gmail.com",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "name": "Test",
+      "email": "test@gmail.com",
+      "password": "Test1",
+      "id": 5
     }
   ],
   "notes": []

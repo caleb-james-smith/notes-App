@@ -1,18 +1,16 @@
-import { useState } from 'react'
-
-
 import './App.css'
 import { NewUser } from './Components/UserComponents/NewUser'
 import { Login } from './Components/UserComponents/Login'
 
 function App() {
 
-
   return (
     <>
-    {/* <NewUser /> */}
+    <div>
+      <h1>Notes App</h1>
+    </div>
+    <NewUser />
     <Login />
-
     </>
   )
 }

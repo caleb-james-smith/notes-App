@@ -3,8 +3,6 @@ import  { useState } from 'react'
 
 export function NewUser () {
 
-
-
     const [formData, setFormData] = useState({name: '', email: '', password: ''})
 
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
@@ -28,6 +26,8 @@ export function NewUser () {
             if (!response.ok) {
                 throw new Error('cannot respond to json file')
             }
+            // Clear form data
+            setFormData({name: '', email: '', password: ''});
 
         } catch (error) {
             console.error(error)
@@ -36,16 +36,10 @@ export function NewUser () {
 
     }
 
-
-
-
-
-
-    
-
     return (
         <>
         <div>
+            <h2>New User Sign Up</h2>
             <form onSubmit={handleNewUser}>
                 <label htmlFor="name">Name: </label>
                 <input name="name" value={formData.name} onChange={handleFormChange}></input>
