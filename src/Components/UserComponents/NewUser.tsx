@@ -49,9 +49,7 @@ export function NewUser () {
                 <input name='password' value={formData.password} onChange={handleFormChange}></input>
                 <button type="submit">New User</button>
             </form>
-        </div>
-        
-        
+        </div>        
         </>
     )
 }
