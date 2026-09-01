@@ -22,5 +22,30 @@
       "notes": []
     }
   ],
-  "notes": []
+  "notes": [
+    {
+      "title": "Title 1",
+      "content": "Text goes here.",
+      "creationDate": "2026-09-01T16:42:41.699Z",
+      "tags": [],
+      "userId": "3",
+      "id": 1
+    },
+    {
+      "title": "Title 2",
+      "content": "Text goes here.",
+      "creationDate": "2026-09-01T16:42:57.056Z",
+      "tags": "tag",
+      "userId": "3",
+      "id": 2
+    },
+    {
+      "title": "Note Title",
+      "content": "Another note.",
+      "creationDate": "2026-09-01T19:13:10.144Z",
+      "tags": "optional",
+      "userId": "3",
+      "id": 3
+    }
+  ]
 }

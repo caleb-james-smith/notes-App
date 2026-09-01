@@ -15,7 +15,7 @@ export function NewUser () {
 
     const handleNewUser = async (event: React.SubmitEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault()
-        try{
+        try {
             const response = await fetch(`http://localhost:3001/users`, {
                 method: 'POST',
                 headers: {
@@ -24,7 +24,7 @@ export function NewUser () {
                 body: JSON.stringify(formData)
             })
             if (!response.ok) {
-                throw new Error('cannot respond to json file')
+                throw new Error('Cannot respond to json file.')
             }
             // Clear form data
             setFormData({name: '', email: '', password: ''});

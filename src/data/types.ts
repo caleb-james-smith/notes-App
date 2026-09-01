@@ -10,8 +10,9 @@ export interface Note {
     id: string
     title: string
     content: string
-    creationDate: Date
-    tags?: string[] 
+    creationDate: Date | null
+    tags?: string[]
+    userId: string
 }
 
 export type NewUserForm = {
@@ -25,6 +26,13 @@ export type LoginStatus = {
     loginStatus: boolean
 }
 
+export interface NoteListProps {
+    loginStatus: LoginStatus
+    allNotes: Note[]
+    filteredNotes: Note[]
+    getNotes: () => void
+    updateFilteredNotes: (notes: Note[], user: User) => void
+}
 
 
 // using Classes to keep the data types
