@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { LoginStatus, Note, User } from "../../data/types";
+import type { CreateNoteProps, LoginStatus, Note, User } from "../../data/types";
 
-export function CreateNote(loginStatus: LoginStatus) {
+export function CreateNote({loginStatus, toggleSwitch}: CreateNoteProps) {
     const currentDate = new Date();
 
     const [formData, setFormData] = useState({title: '', content: '', creationDate: currentDate, tags: []})
@@ -31,6 +31,7 @@ export function CreateNote(loginStatus: LoginStatus) {
                 }
                 // Clear form data
                 setFormData({title: '', content: '', creationDate: currentDate, tags: []});
+                toggleSwitch()
             } else {
                 throw new Error("Cannot load user.");
             }

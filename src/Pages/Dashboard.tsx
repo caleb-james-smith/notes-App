@@ -23,7 +23,7 @@ export function Dashboard () {
 
     const [searchTag, setSearchTag] = useState<string>('');
 
-    // const [switch, setSwitch] = useState<boolean>(false);
+    const [isSwitch, setIsSwitch] = useState<boolean>(false);
 
     const createUserProp = (input: boolean):void  => {
         setCreateUser(input)
@@ -82,20 +82,20 @@ export function Dashboard () {
         }
     }
 
-    // function toggleSwitch() {
-    //     if (switch) {
-    //         setSwitch(false)
-    //     } else {
-    //         setSwitch(true)
-    //     }
-    // }
+    function toggleSwitch() {
+        if (isSwitch) {
+            setIsSwitch(false)
+        } else {
+            setIsSwitch(true)
+        }
+    }
 
     // When login status changes, load all notes
     useEffect(() => {
         console.log('useEffect after login status change:', loginStatus);
         getNotes();        
         console.log("allNotes after getNotes():", allNotes);
-    }, [loginStatus]);
+    }, [loginStatus, isSwitch]);
 
     // When all notes changes, filter notes
     useEffect(() => {
@@ -126,7 +126,7 @@ export function Dashboard () {
             return (
             <>
                 <UpdateUser { ...loginStatus } />
-                <CreateNote { ...loginStatus } />
+                <CreateNote loginStatus={loginStatus} toggleSwitch={toggleSwitch} />
                 {/* Pass allNotes, filteredNotes, getNotes, and updateFilteredNotes to NoteList */}
                 <NoteList loginStatus={loginStatus} allNotes={allNotes} filteredNotes={filteredNotes} getNotes={getNotes} updateFilteredNotes={updateFilteredNotes} />
             </>

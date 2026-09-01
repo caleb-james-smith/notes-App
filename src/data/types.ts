@@ -34,6 +34,11 @@ export interface NoteListProps {
     updateFilteredNotes: (notes: Note[], user: User) => void
 }
 
+export interface CreateNoteProps {
+    loginStatus: LoginStatus
+    toggleSwitch: ()=> void
+}
+
 
 // using Classes to keep the data types
 

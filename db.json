@@ -46,6 +46,22 @@
       "tags": "optional",
       "userId": "3",
       "id": 3
+    },
+    {
+      "title": "Test",
+      "content": "test content",
+      "creationDate": "2026-09-01T20:06:10.319Z",
+      "tags": "1",
+      "userId": "1",
+      "id": 4
+    },
+    {
+      "title": "test2",
+      "content": "testcontent",
+      "creationDate": "2026-09-01T20:17:53.915Z",
+      "tags": "2",
+      "userId": "1",
+      "id": 5
     }
   ]
 }
