@@ -1,6 +1,4 @@
 import './App.css'
-import { NewUser } from './Components/UserComponents/NewUser'
-import { Login } from './Components/UserComponents/Login'
 import { Dashboard } from './Pages/Dashboard'
 
 function App() {

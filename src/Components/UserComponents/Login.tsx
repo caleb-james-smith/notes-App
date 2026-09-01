@@ -6,18 +6,6 @@ import type { User, LoginStatus } from '../../data/types'
 export function Login ({loginStatus, updateLoginStatus, createUser, createUserProp}: {loginStatus: LoginStatus, updateLoginStatus:(input: LoginStatus) => void, createUser: boolean, createUserProp:(input: boolean) => void} ) {
 
     const [loginFormData, setLoginFormData] = useState({email: '', password: ''})  
-    const [updateFormData, setUpdateFormData] = useState({email: '', password: ''})  
-    // const [loginStatus, setLoginStatus] = useState<LoginStatus>(
-    //     {
-    //         user: null,
-    //         loginStatus: false
-    //     }
-    // )
-
-    // When login status changes, log it.
-    useEffect (() => {
-        console.log('useEffect:', loginStatus)
-    }, [loginStatus])
 
     const handleLoginFormChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
         setLoginFormData({
@@ -26,12 +14,6 @@ export function Login ({loginStatus, updateLoginStatus, createUser, createUserPr
             }
          )
     }
-    // const handleUpdateFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setUpdateFormData({
-    //         ...updateFormData,
-    //         [event.target.name]: event.target.value
-    //     })
-    // }
 
     const handleLogin = async (event: React.SubmitEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault()
@@ -80,29 +62,6 @@ export function Login ({loginStatus, updateLoginStatus, createUser, createUserPr
         }
     }
 
-    // const handleUpdate = async (event: React.SubmitEvent<HTMLFormElement>): Promise<void> => {
-    //     event.preventDefault();
-    //     try {
-    //         if (loginStatus.user){
-    //             const response = await fetch(`http://localhost:3001/users/${loginStatus.user.id}`, {
-    //                 method: 'PUT',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //                 body: JSON.stringify(updateFormData)
-    //             })
-    //             if(!response.ok) {
-    //                 throw new Error ('Network response failed')
-    //             }               
-    //         } else {
-    //             console.log('No user logged in')
-    //         }
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-
-    // }
-
     return (
         <>
         <div>
@@ -117,19 +76,6 @@ export function Login ({loginStatus, updateLoginStatus, createUser, createUserPr
             <button onClick={handleLogout}>Logout</button>
         </div>
         <button onClick={handleCreateUserButton}>Create User</button>
-
-        {/* <div>
-            <h2>Update User Info</h2>
-            <form onSubmit={handleUpdate}>
-                <label htmlFor='email'>Email: </label>
-                <input type='text' name='email' id='email' onChange={handleUpdateFormChange} />
-                <label htmlFor="password">Password: </label>
-                <input type='text' name='password' id='password' onChange={handleUpdateFormChange} />
-
-                <button type='submit'>Update User</button>
-            </form>
-
-        </div> */}
         </>
     )
 }

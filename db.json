@@ -1,21 +1,25 @@
 {
   "users": [
     {
+      "name": "Matthew",
       "email": "mattcc@gmail.com",
       "password": "",
-      "id": 1
+      "id": 1,
+      "notes": []
     },
     {
-      "name": "Steven",
-      "email": "w@gmail.com",
-      "password": "1234",
-      "id": 2
+      "id": 2,
+      "name": "Andrew",
+      "email": "test2@gmail.com",
+      "password": "Test2",
+      "notes": []
     },
     {
+      "id": 3,
       "name": "john",
-      "email": "jon@gmail.com",
-      "password": "1234",
-      "id": 3
+      "email": "jimmy@gmail.com",
+      "password": "456",
+      "notes": []
     }
   ],
   "notes": []

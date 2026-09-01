@@ -1,5 +1,5 @@
-import { useState } from "react"
-import type { LoginStatus, User } from "../data/types"
+import { useEffect, useState } from "react"
+import type { LoginStatus } from "../data/types"
 import { Login } from "../Components/UserComponents/Login"
 import { UpdateUser } from "../Components/UserComponents/UpdateUser"
 import { NewUser } from "../Components/UserComponents/NewUser"
@@ -13,7 +13,12 @@ export function Dashboard () {
                 user: null,
                 loginStatus: false
             }
-        )
+    )
+
+    useEffect (() => {
+        console.log('useEffect:', loginStatus)
+    }, [loginStatus])
+
 
     const createUserProp = (input: boolean):void  => {
         setCreateUser(input)

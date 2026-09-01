@@ -4,14 +4,20 @@ import type { User, LoginStatus } from '../../data/types'
 
 
 export function UpdateUser (loginStatus: LoginStatus) {
-    const [updateFormData, setUpdateFormData] = useState({email: '', password: ''})
+    const [updateFormData, setUpdateFormData] = useState<User>({id: '', name: '', email: '', password: '', notes: []})
 
     const handleUpdateFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setUpdateFormData({
-            ...updateFormData,
-            [event.target.name]: event.target.value
-        })
+        if (loginStatus.user) {
+            setUpdateFormData({
+                ...updateFormData,
+                id: loginStatus.user.id,
+                name: loginStatus.user.name,
+                [event.target.name]: event.target.value,
+                notes: loginStatus.user.notes
+            })
+        }
     }
+
     const handleUpdate = async (event: React.SubmitEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
         try {
@@ -25,7 +31,9 @@ export function UpdateUser (loginStatus: LoginStatus) {
                 })
                 if(!response.ok) {
                     throw new Error ('Network response failed')
-                }               
+                }
+                // Clear form data
+                setUpdateFormData({id: '', name: '', email: '', password: '', notes: []});               
             } else {
                 console.log('No user logged in')
             }
@@ -41,9 +49,9 @@ export function UpdateUser (loginStatus: LoginStatus) {
             <h2>Update User Info</h2>
             <form onSubmit={handleUpdate}>
                 <label htmlFor='email'>Email: </label>
-                <input type='text' name='email' id='email' onChange={handleUpdateFormChange} />
+                <input type='text' name='email' value={updateFormData.email} id='email' onChange={handleUpdateFormChange} />
                 <label htmlFor="password">Password: </label>
-                <input type='text' name='password' id='password' onChange={handleUpdateFormChange} />
+                <input type='text' name='password' value={updateFormData.password} id='password' onChange={handleUpdateFormChange} />
                 <button type='submit'>Update User</button>
             </form>
         </div>   
