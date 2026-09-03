@@ -5,7 +5,7 @@ import type { EditNoteProps, Note } from "../../data/types"
 
 
 
-export function EditNote ({note, changeEditState}: EditNoteProps) {
+export function EditNote ({note, changeEditState, toggleSwitch}: EditNoteProps) {
 
     const [updateFormData, setUpdateFormData] = useState<Note>({
         id: note.id, title: note.title, content: note.content, creationDate: note.creationDate, tags: note.tags, userId: note.userId
@@ -36,6 +36,7 @@ export function EditNote ({note, changeEditState}: EditNoteProps) {
                 if (!response.ok) {
                     throw new Error ('Network response failed')
                 }
+                toggleSwitch()
                 changeEditState()                
             } else {
                 throw new Error ('No note availible')

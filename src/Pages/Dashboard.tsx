@@ -106,7 +106,7 @@ export function Dashboard () {
                 <UpdateUser { ...loginStatus } />
                 <CreateNote loginStatus={loginStatus} toggleSwitch={toggleSwitch} />
                 <NoteSearch handleSetTagSearch={handleSetTagSearch} />
-                <NoteList loginStatus={loginStatus} allNotes={allNotes} filteredNotes={filteredNotes} getNotes={getNotes} updateFilteredNotes={updateFilteredNotes} />
+                <NoteList loginStatus={loginStatus} allNotes={allNotes} filteredNotes={filteredNotes} getNotes={getNotes} updateFilteredNotes={updateFilteredNotes} toggleSwitch={toggleSwitch} />
             </>
         );
         } else {

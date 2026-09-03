@@ -1,7 +1,7 @@
 import type { LoginStatus, Note, NoteListProps } from "../../data/types";
 import { NoteCard } from "./NoteCard";
 
-export function NoteList({loginStatus, allNotes, filteredNotes, getNotes, updateFilteredNotes}: NoteListProps): React.JSX.Element {
+export function NoteList({loginStatus, allNotes, filteredNotes, getNotes, updateFilteredNotes, toggleSwitch}: NoteListProps): React.JSX.Element {
 
     function renderNoteList() {
         if (loginStatus.user) {
@@ -9,7 +9,7 @@ export function NoteList({loginStatus, allNotes, filteredNotes, getNotes, update
             {
                 return (
                     filteredNotes.map((note: Note) => (
-                        <NoteCard key={note.id} {...note} />))
+                        <NoteCard key={note.id} note={note} toggleSwtich={toggleSwitch} />))
                 );
             } else {
                 return (<p>There are no notes.</p>);

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import type { Note } from "../../data/types";
+import type { NoteCardProps } from "../../data/types";
 import { EditNote } from "./EditNote";
 
-export function NoteCard(note: Note): React.JSX.Element {
+export function NoteCard({note, toggleSwitch}: NoteCardProps): React.JSX.Element {
     const [editState, setEditState] = useState<boolean>(false)
 
     const changeEditState = () => {
@@ -22,7 +22,7 @@ export function NoteCard(note: Note): React.JSX.Element {
                 {note.creationDate && <p>{`${note.creationDate}`}</p>}
                 <div>
                     {editState && (
-                        <EditNote note={note} changeEditState={changeEditState} />
+                        <EditNote note={note} toggleSwitch={toggleSwitch} changeEditState={changeEditState} />
                     )}
                 </div>
                 <button onClick={changeEditState}>{!editState ? 'EditNote' : 'Close' }</button>

@@ -1,3 +1,5 @@
+import { NoteCard } from "../Components/NoteComponents/NoteCard"
+
 export interface User  {
     id: string
     name: string
@@ -32,6 +34,12 @@ export interface NoteListProps {
     filteredNotes: Note[]
     getNotes: () => void
     updateFilteredNotes: (notes: Note[], user: User) => void
+    toggleSwitch: () => void
+}
+
+export interface NoteCardProps {
+    note: Note 
+    toggleSwtich: () => void
 }
 
 export interface CreateNoteProps {
@@ -46,6 +54,7 @@ export interface NoteSearchProps {
 export interface EditNoteProps {
     note: Note
     changeEditState: () => void
+    toggleSwitch: () => void
 }
 
 
