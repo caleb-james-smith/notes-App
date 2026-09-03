@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import type { User, LoginStatus } from '../../data/types'
 
 
@@ -29,12 +29,10 @@ export function Login ({loginStatus, updateLoginStatus, createUser, createUserPr
                 updateLoginStatus({
                     user: user,
                     loginStatus: true
-                })  
-                console.log(loginStatus)
+                })
             } else {
-                console.log('invalid password')
-            }  
-            console.log(loginStatus)         
+                console.log('invalid password or email')
+            }        
 
         } catch (error) {
             console.error(error)

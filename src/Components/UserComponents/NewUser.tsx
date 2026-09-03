@@ -1,7 +1,7 @@
 import {} from "../../data/types";
 import  { useState } from 'react'
 
-export function NewUser () {
+export function NewUser ({createUser, createUserProp}: {createUser: boolean, createUserProp:(input: boolean) => void }) {
 
     const [formData, setFormData] = useState({name: '', email: '', password: ''})
 
@@ -36,6 +36,15 @@ export function NewUser () {
 
     }
 
+    const handleCreateUserButton = (event: React.MouseEvent<HTMLButtonElement>): void => {
+        event.preventDefault()
+        if (createUser) {
+            createUserProp(false)
+        } else {
+            createUserProp(true)
+        }
+    }
+
     return (
         <>
         <div>
@@ -49,7 +58,10 @@ export function NewUser () {
                 <input name='password' value={formData.password} onChange={handleFormChange}></input>
                 <button type="submit">New User</button>
             </form>
-        </div>        
+        </div>  
+        <div>
+            <button onClick={handleCreateUserButton}>Login</button>
+        </div>      
         </>
     )
 }

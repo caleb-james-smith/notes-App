@@ -20,6 +20,12 @@
       "email": "jimmy@gmail.com",
       "password": "456",
       "notes": []
+    },
+    {
+      "id": 4,
+      "name": "Jeff",
+      "email": "Tim@mail.com",
+      "password": "123456"
     }
   ],
   "notes": [
@@ -35,7 +41,9 @@
       "title": "Title 2",
       "content": "Text goes here.",
       "creationDate": "2026-09-01T16:42:57.056Z",
-      "tags": "tag",
+      "tags": [
+        "#tag"
+      ],
       "userId": "3",
       "id": 2
     },
@@ -43,7 +51,9 @@
       "title": "Note Title",
       "content": "Another note.",
       "creationDate": "2026-09-01T19:13:10.144Z",
-      "tags": "optional",
+      "tags": [
+        "#optional"
+      ],
       "userId": "3",
       "id": 3
     },
@@ -51,7 +61,9 @@
       "title": "Test",
       "content": "test content",
       "creationDate": "2026-09-01T20:06:10.319Z",
-      "tags": "1",
+      "tags": [
+        "#1"
+      ],
       "userId": "1",
       "id": 4
     },
@@ -59,9 +71,104 @@
       "title": "test2",
       "content": "testcontent",
       "creationDate": "2026-09-01T20:17:53.915Z",
-      "tags": "2",
+      "tags": [
+        "#2"
+      ],
       "userId": "1",
       "id": 5
+    },
+    {
+      "title": "Test3",
+      "content": "test content",
+      "creationDate": "2026-09-01T20:18:03.091Z",
+      "tags": [
+        "#3"
+      ],
+      "userId": "1",
+      "id": 6
+    },
+    {
+      "title": "test 4",
+      "content": "test content",
+      "creationDate": "2026-09-01T20:40:16.235Z",
+      "tags": [
+        "#4"
+      ],
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "title": "Test 1",
+      "content": "Text text text",
+      "creationDate": "2026-09-02T15:57:42.581Z",
+      "tags": [
+        "#1654"
+      ],
+      "userId": "2",
+      "id": 8
+    },
+    {
+      "title": "note ",
+      "content": "work ",
+      "creationDate": "2026-09-02T17:21:02.672Z",
+      "tags": [
+        "please"
+      ],
+      "userId": "3",
+      "id": 14
+    },
+    {
+      "title": "Note",
+      "content": "Is ",
+      "creationDate": "2026-09-02T17:21:11.763Z",
+      "tags": [
+        "working"
+      ],
+      "userId": "3",
+      "id": 15
+    },
+    {
+      "title": "Title",
+      "content": "Of ",
+      "creationDate": "2026-09-02T17:27:09.982Z",
+      "tags": [
+        "stuff"
+      ],
+      "userId": "3",
+      "id": 16
+    },
+    {
+      "title": "New Note",
+      "content": "It a really awesome note",
+      "creationDate": "2026-09-02T21:12:58.219Z",
+      "tags": [
+        "",
+        "note ",
+        "cool ",
+        "awesome"
+      ],
+      "userId": "4",
+      "id": 17
+    },
+    {
+      "title": "note 2",
+      "content": "asdf",
+      "creationDate": "2026-09-02T21:13:45.122Z",
+      "tags": [
+        "cool"
+      ],
+      "userId": "4",
+      "id": 18
+    },
+    {
+      "title": "note 3",
+      "content": "dlksajf",
+      "creationDate": "2026-09-02T21:14:40.449Z",
+      "tags": [
+        "note"
+      ],
+      "userId": "4",
+      "id": 19
     }
   ]
 }

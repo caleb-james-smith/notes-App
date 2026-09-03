@@ -1,21 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { CreateNoteProps, LoginStatus, Note, User } from "../../data/types";
 
 export function CreateNote({loginStatus, toggleSwitch}: CreateNoteProps) {
     const currentDate = new Date();
 
-    const [formData, setFormData] = useState({title: '', content: '', creationDate: currentDate, tags: []})
+    const [formData, setFormData] = useState({title: '', content: '', creationDate: currentDate, tags: ''})
 
     const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
         setFormData({
                 ...formData, 
-                [event.target.name]: event.target.value
+                [event.target.name]: event.target.value                
             }
          )
     }
 
+    const handleTagConvert = () => {
+        const tempTags = formData.tags
+        const tagsArr = tempTags.split('#')
+        console.log('form Data', formData)
+        console.log(tagsArr)
+        const convertForm = {
+            title: formData.title,
+            content: formData.content,
+            creationDate: formData.creationDate,
+            tags: tagsArr
+        }
+        return convertForm
+    }
+    
+
     const handleCreateNote = async (event:React.SubmitEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
+        const convertForm = handleTagConvert();
         try {
             if (loginStatus.user)
                 {
@@ -24,13 +40,12 @@ export function CreateNote({loginStatus, toggleSwitch}: CreateNoteProps) {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(convertForm)
                 });
                 if (!response.ok) {
                     throw new Error("Cannot respond to json file.");
                 }
-                // Clear form data
-                setFormData({title: '', content: '', creationDate: currentDate, tags: []});
+                setFormData({title: '', content: '', creationDate: currentDate, tags: ''});
                 toggleSwitch()
             } else {
                 throw new Error("Cannot load user.");
@@ -51,7 +66,7 @@ export function CreateNote({loginStatus, toggleSwitch}: CreateNoteProps) {
                     <label htmlFor="content">Content: </label>
                     <input name="content" value={formData.content} onChange={handleFormChange}></input>
                     <label htmlFor="tags">Tags: </label>
-                    <input name="tags" value={formData.tags[-1]} onChange={handleFormChange}></input>
+                    <input name="tags" value={formData.tags} onChange={handleFormChange}></input>
                     <button type="submit">Create Note</button>
                 </form>
             </div>

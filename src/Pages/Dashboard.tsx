@@ -5,6 +5,7 @@ import { UpdateUser } from "../Components/UserComponents/UpdateUser"
 import { NewUser } from "../Components/UserComponents/NewUser"
 import { NoteList } from "../Components/NoteComponents/NoteList"
 import { CreateNote } from "../Components/NoteComponents/CreateNote"
+import { NoteSearch } from "../Components/NoteComponents/NoteSearch"
 
 export function Dashboard () {
 
@@ -39,9 +40,7 @@ export function Dashboard () {
             if (!response.ok) {
                 throw new Error("Unable to load notes")
             }
-            // Get json from response
             const data = await response.json();
-            // Set all notes
             setAllNotes(data);
         } catch (error) {
             console.error(error)
@@ -49,31 +48,18 @@ export function Dashboard () {
     }
 
     function updateFilteredNotes(notes: Note[], user: User): void {        
-        // Filter by user
-        console.log(`Start of updateFilteredNotes()`);
-        console.log("user.id:", user.id);
-        console.log("user.name:", user.name)
         if (loginStatus.user && loginStatus.loginStatus) {
-            console.log("Passed login status condition");
-            console.log("input notes:", notes);
-            for (const note of notes) {
-                console.log("note:", note)
-                console.log("note.userId:", note.userId)
-            }
+            
             const userNotes = notes.filter((note) => (note.userId === user.id.toString()));
-            console.log("userNotes:", userNotes);
+            
             setFilteredNotes(userNotes);
         }
-        // Filter tag
         if (searchTag) {
             const taggedNotes: Note[] = [];
-            // Loop over all notes
             for (const note of filteredNotes) {
-                // For every note, loop over all tags
                 if (note.tags) {
                     for (const tag of note.tags) {
-                        // If searchTag matches a tag, include that note
-                        if (searchTag == tag)
+                        if (tag.includes(searchTag))
                             taggedNotes.push(note);
                     }
                 }
@@ -90,36 +76,28 @@ export function Dashboard () {
         }
     }
 
-    // When login status changes, load all notes
-    useEffect(() => {
-        console.log('useEffect after login status change:', loginStatus);
-        getNotes();        
-        console.log("allNotes after getNotes():", allNotes);
-    }, [loginStatus, isSwitch]);
+    function handleSetTagSearch (input: string): void {
+        setSearchTag(input)
+    }
 
-    // When all notes changes, filter notes
     useEffect(() => {
-        console.log("useEffect after all notes change")
-        console.log("allNotes after allNotes change:", allNotes);
+        getNotes();
+            }, [loginStatus, isSwitch, searchTag]);
+
+    useEffect(() => {
         if (loginStatus.user && allNotes) {
             updateFilteredNotes(allNotes, loginStatus.user);
         }
-        console.log("filteredNotes:", filteredNotes);
     }, [allNotes]);
 
-    // When input tag search changes, filter notes
-    // useEffect(() => {
-    //     console.log('useEffect after tag search change.');
-    //     if (loginStatus.user) {
-    //         updateFilteredNotes(allNotes, loginStatus.user);
-    //     }
-    //     console.log("filteredNotes:", filteredNotes);
-    // }, [searchTag]);
-
     useEffect(() => {
-        console.log('useEffect after change to filtered notes.');
+        console.log('useEffect after tag search change.');
+        if (loginStatus.user) {
+            updateFilteredNotes(allNotes, loginStatus.user);
+        }
         console.log("filteredNotes:", filteredNotes);
-    }, [filteredNotes]);
+    }, [searchTag]);
+
 
     function renderDashboard () {
         if(loginStatus.loginStatus) {
@@ -127,13 +105,16 @@ export function Dashboard () {
             <>
                 <UpdateUser { ...loginStatus } />
                 <CreateNote loginStatus={loginStatus} toggleSwitch={toggleSwitch} />
-                {/* Pass allNotes, filteredNotes, getNotes, and updateFilteredNotes to NoteList */}
+                <NoteSearch handleSetTagSearch={handleSetTagSearch} />
                 <NoteList loginStatus={loginStatus} allNotes={allNotes} filteredNotes={filteredNotes} getNotes={getNotes} updateFilteredNotes={updateFilteredNotes} />
             </>
         );
         } else {
             if (createUser) {
-                return <NewUser />
+                return <NewUser 
+                    createUser={createUser}
+                    createUserProp={createUserProp}
+                />
             } else {
                 return (
                     <Login

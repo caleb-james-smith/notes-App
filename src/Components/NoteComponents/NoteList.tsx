@@ -12,7 +12,7 @@ export function NoteList({loginStatus, allNotes, filteredNotes, getNotes, update
                         <NoteCard key={note.id} {...note} />))
                 );
             } else {
-                return (<p>There are no notes. Please create a note!</p>);
+                return (<p>There are no notes.</p>);
             }
 
         } else {

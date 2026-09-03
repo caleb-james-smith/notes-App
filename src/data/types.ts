@@ -7,7 +7,7 @@ export interface User  {
 }
 
 export interface Note {
-    id: string
+    id: string | null
     title: string
     content: string
     creationDate: Date | null
@@ -37,6 +37,15 @@ export interface NoteListProps {
 export interface CreateNoteProps {
     loginStatus: LoginStatus
     toggleSwitch: ()=> void
+}
+
+export interface NoteSearchProps {
+    handleSetTagSearch: (input: string) => void
+}
+
+export interface EditNoteProps {
+    note: Note
+    changeEditState: () => void
 }
 
 
